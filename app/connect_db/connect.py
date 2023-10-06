@@ -24,14 +24,14 @@ class mongoDBConnector:
         return music
 
     def connect(self):
-        username = "username"
-        password = "password"
+        username = "mon_user"
+        password = "mon_mot_de_passe"
         database = "spotify"
         # Provide the mongodb atlas url to connect python to mongodb using pymongo
         CONNECTION_STRING = f"mongodb://{username}:{password}@localhost:27017/"
 
         # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
-        client = MongoClient('mongodb://username:password@localhost:27017/?authMechanism=DEFAULT')
+        client = MongoClient('mongodb://mon_user:mon_mot_de_passe@localhost:27017/?authMechanism=DEFAULT')
 
         print(client)
 
