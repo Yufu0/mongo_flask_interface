@@ -7,35 +7,36 @@
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />
+    <link rel="stylesheet" href="../static/css/custom.css" />
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" />-->
 </head>
 <body>
-   <div class="container">
-        <h1>Liste de Musique</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Titre</th>
-                    <th>Artiste</th>
-                    <th>Durée</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for musique in musiques %}
-                <tr>
-                    <td>{{ musique.title }}</td>
-                    <td>{{ musique.artist }}</td>
-                    <td>{{ musique.duration }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+ <div class="container">
+    <h1>Liste de Musique</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Artiste</th>
+                <th>Durée</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for musique in musiques %}
+            <tr>
+                <td>{{ musique.title }}</td>
+                <td>{{ musique.artist }}</td>
+                <td>{{ musique.duration }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-    <!-- Inclure les scripts Bootstrap (via CDN) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Inclure les scripts Bootstrap (via CDN) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
