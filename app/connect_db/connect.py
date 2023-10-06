@@ -5,15 +5,25 @@ class mongoDBConnector:
         self.client = None
         self.connect()
         # print(self.client)
-        print(self.find_all('music'))
+        self.find_all('music')
 
     def find_all(self, collection_name):
         collection = self.client[collection_name]
-        print(collection)
         music = []
-        print(collection.find())
         for item in collection.find():
-            print(item)
+            music.append(
+                {
+                    'title': item.get('trackName'),
+                    'artist': item.get('artistName'),
+                    'duration': item.get('duration_ms')
+                }
+            )
+        return music
+    
+    def recherche(self, collection_name, rech):
+        collection = self.client[collection_name]
+        music = []
+        for item in collection.find({'artistName': rech}):
             music.append(
                 {
                     'title': item.get('trackName'),
