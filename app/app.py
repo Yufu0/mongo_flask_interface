@@ -6,6 +6,7 @@ from json import dumps, load, loads
 
 from flask import Flask, render_template, Response
 
+from connect_db.connect import mongoDBConnector
 def sample_function():
     """This is a sample docstring subject
 
@@ -23,7 +24,7 @@ def sample_function():
     """
     return "Hello World"
 
-
+mongoDB_connector = mongoDBConnector()
 app = Flask(__name__)
 
 
@@ -45,6 +46,11 @@ def api_variable(variable):
     """This is an api endpoint with a string variable as url parameter"""
     data = {"You entered variable:": variable}
     return Response(dumps(data), status=200, mimetype='application/json')
+
+@app.route('/music')
+def list_musics():
+    musics = mongoDB_connector.find_all('music')
+    return render_template('musics.html', musiques=musics)
 
 
 if __name__ == '__main__':
