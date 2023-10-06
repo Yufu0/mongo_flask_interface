@@ -2,3 +2,4 @@ Flask
 requests
 pytest
 jinja2
+pymongo
