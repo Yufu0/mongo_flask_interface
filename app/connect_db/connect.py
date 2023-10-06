@@ -5,15 +5,25 @@ class mongoDBConnector:
         self.client = None
         self.connect()
         # print(self.client)
-        print(self.find_all('music'))
+        self.find_all('music')
 
     def find_all(self, collection_name):
         collection = self.client[collection_name]
-        print(collection)
         music = []
-        print(collection.find())
         for item in collection.find():
-            print(item)
+            music.append(
+                {
+                    'title': item.get('trackName'),
+                    'artist': item.get('artistName'),
+                    'duration': item.get('duration_ms')
+                }
+            )
+        return music
+    
+    def recherche(self, collection_name, rech):
+        collection = self.client[collection_name]
+        music = []
+        for item in collection.find({'artistName': rech}):
             music.append(
                 {
                     'title': item.get('trackName'),
@@ -24,14 +34,14 @@ class mongoDBConnector:
         return music
 
     def connect(self):
-        username = "username"
-        password = "password"
+        username = "mon_user"
+        password = "mon_mot_de_passe"
         database = "spotify"
         # Provide the mongodb atlas url to connect python to mongodb using pymongo
         CONNECTION_STRING = f"mongodb://{username}:{password}@localhost:27017/"
 
         # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
-        client = MongoClient('mongodb://username:password@localhost:27017/?authMechanism=DEFAULT')
+        client = MongoClient('mongodb://mon_user:mon_mot_de_passe@localhost:27017/?authMechanism=DEFAULT')
 
         print(client)
 

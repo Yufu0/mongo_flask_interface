@@ -4,7 +4,7 @@ import re
 from datetime import datetime, timedelta
 from json import dumps, load, loads
 
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 
 from connect_db.connect import mongoDBConnector
 def sample_function():
@@ -52,6 +52,11 @@ def list_musics():
     musics = mongoDB_connector.find_all('music')
     return render_template('musics.html', musiques=musics)
 
+@app.route('/recherche')
+def rech_artiste():
+    musics = mongoDB_connector.recherche('music', request.args.get("query"))
+    return render_template('musics.html', musiques=musics)
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
