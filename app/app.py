@@ -1,6 +1,3 @@
-import requests
-import re
-
 from datetime import datetime, timedelta
 from json import dumps, load, loads
 
