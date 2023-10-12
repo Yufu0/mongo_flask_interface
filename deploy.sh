@@ -2,4 +2,4 @@
 
 docker build -t myapp:latest .
 
-docker compose up -d
+docker compose up
