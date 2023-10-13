@@ -17,7 +17,8 @@ jobs:
        env:
          DOCKER_USER: ${{secrets.DOCKER_USER}}
          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+         DATE: $(date +%s)
        run: |
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-         docker build . --file Dockerfile --tag $DOCKER_USER/flask-app:$(date +%s)
-         docker push $(date +%s)
+         docker build . --file Dockerfile --tag $DOCKER_USER/flask-app:$DATE
+         docker push $DATE
