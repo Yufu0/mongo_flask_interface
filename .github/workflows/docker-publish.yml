@@ -19,13 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     - uses: actions/checkout@v2
-     - name: docker login
-       
-       
-     - name: Build the docker image
-       
-
+     - uses: actions/checkout@v2 
      - name: Docker Push
        env:
          DOCKER_USER: ${{secrets.DOCKER_USER}}
