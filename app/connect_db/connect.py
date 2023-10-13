@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import os
 
 class mongoDBConnector:
     def __init__(self):
@@ -34,19 +35,17 @@ class mongoDBConnector:
         return music
 
     def connect(self):
-        username = "username"
-        password = "password"
-        database = "spotify"
-        address = "mongo"
-        port = "27017"
+        username = os.environ["MONGO_USERNAME"]
+        password = os.environ["MONGO_PASSWORD"]
+        database = os.environ["MONGO_DATABASE"]
+        address = os.environ["MONGO_ADDRESS"]
+        port = os.environ["MONGO_PORT"]
         # Provide the mongodb atlas url to connect python to mongodb using pymongo
         CONNECTION_STRING = f"mongodb://{username}:{password}@{address}:{port}/"
         print(CONNECTION_STRING)
 
         # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
         client = MongoClient(CONNECTION_STRING)
-
-        print(client)
 
         # Create the database for our example (we will use the same database throughout the tutorial
         self.client = client[database]
