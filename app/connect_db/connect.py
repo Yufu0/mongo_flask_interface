@@ -3,7 +3,7 @@ import os
 
 class mongoDBConnector:
     def __init__(self):
-        self.client
+        self.client = None
         self.connect()
 
     def find_all(self, collection_name):
