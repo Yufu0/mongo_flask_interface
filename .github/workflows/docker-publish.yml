@@ -30,4 +30,4 @@ jobs:
        run: docker build . --file Dockerfile --tag flask-app:$(date +%s)
 
      - name: Docker Push
-       run: docker push ${{secrets.DOCKER_USER}}/flask-app
+       run: echo 'docker push ${{secrets.DOCKER_USER}}/flask-app' & docker push ${{secrets.DOCKER_USER}}/flask-app
