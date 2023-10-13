@@ -27,4 +27,4 @@ jobs:
        run: |
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
          docker build . --file Dockerfile --tag $DOCKER_USER/flask-app:$(date +%s)
-         docker push docker.io/$DOCKER_USER/flask-app:$(date +%s)
+         docker push $(date +%s)
