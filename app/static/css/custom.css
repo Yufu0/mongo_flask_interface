@@ -1,22 +1,11 @@
-
-ul {
-  list-style-type: none; /* Remove default list bullets */
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
+.colorful-button {
+  background-color: #ff5733;
+  border-color: #ff5733;
+  color: #fff;
+  font-size: 24px;
+  transition: background-color 0.3s, border-color 0.3s;
 }
-
-/* Style the list items */
-li {
-  margin-bottom: 10px; /* Add spacing between list items */
-  padding: 5px; /* Add padding to list items */
-  background-color: #f0f0f0; /* Background color for list items */
-  border-radius: 5px; /* Rounded corners for list items */
+.colorful-button:hover {
+  background-color: #ff9642;
+  border-color: #ff9642;
 }
-
-/* Style list item hover effect */
-li:hover {
-  background-color: #e0e0e0; /* Background color change on hover */
-  cursor: pointer; /* Change cursor on hover */
-}
-
-
