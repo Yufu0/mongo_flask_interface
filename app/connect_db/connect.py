@@ -3,7 +3,7 @@ import os
 
 class mongoDBConnector:
     def __init__(self):
-        self.client = None
+        self.client
         self.connect()
 
     def find_all(self, collection_name):
@@ -39,7 +39,6 @@ class mongoDBConnector:
         return music
 
     def connect(self):
-        print(os.environ)
         username = os.environ["MONGO_USERNAME"]
         password = os.environ["MONGO_PASSWORD"]
         database = os.environ["MONGO_DATABASE"]
@@ -47,7 +46,6 @@ class mongoDBConnector:
         port = os.environ["MONGO_PORT"]
         # Provide the mongodb atlas url to connect python to mongodb using pymongo
         CONNECTION_STRING = f"mongodb://{username}:{password}@{address}:{port}/"
-        print(CONNECTION_STRING)
 
         # Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
         client = MongoClient(CONNECTION_STRING)
