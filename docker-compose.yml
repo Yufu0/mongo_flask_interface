@@ -22,11 +22,11 @@ services:
   networks:
    - network1
   environment:
-   MONGO_USERNAME: username
-   MONGO_PASSWORD: password
-   MONGO_ADDRESS: mongo
-   MONGO_PORT: 27017
-   MONGO_DATABASE: spotify
+   - MONGO_USERNAME=username
+   - MONGO_PASSWORD=password
+   - MONGO_ADDRESS=mongo
+   - MONGO_PORT=27017
+   - MONGO_DATABASE=spotify
 
 
 volumes:
