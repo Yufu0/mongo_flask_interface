@@ -1,64 +1,50 @@
-# This is the base sceleton for a Python Flask app
+# Projet avec Flask et MongoDB dans Docker
 
-To use this sceleton, just 
-* fork this repo
-* clone this repo
-* remove the parts not needed
+Ce projet est une application web construite avec Flask, un framework web en Python, qui communique avec une base de données NoSQL MongoDB. Il est conçu pour s'exécuter dans deux conteneurs Docker distincts, un pour le serveur web et un pour la base de données MongoDB, les deux connectés à un réseau local pour permettre la communication entre eux.
 
-## Prerequisites:
+## Configuration requise
 
-* docker is installed 
+Avant de démarrer le projet, assurez-vous d'avoir les éléments suivants installés sur votre système :
 
-## Steps to run the app locally:
+- Docker (assurez-vous que Docker est correctement configuré et en cours d'exécution)
 
-1. Build the container locally: `docker build -t my-flask-app .`
-2. Run the container locally: `docker run -it --rm -p 80:80 --name my-flask-app -v $(pwd)/app:/app my-flask-app`
-3. Access the app via your browser: [http://localhost](http://localhost)
+## Déploiement
 
-
-## Testing:
-
-`pytest` is ran from within the `/app` directory inside the container on build. The container build will not be successful if a test fails. 
-For the test to be successful the build has to happen within Daimler's internal network and with the certificate in the `/app` directory.
-
-The following screenshot helps to configure testing in pycharm:
-
-
-<p align="center">
-  <img src="img/pycharm-test-run-configuration.png" width=75%>
-</p>
-
-## Api Documentation:
-
-<details><summary><b>Sample API request: </b><code>GET /api/&#60;string:variable&#62;</code></summary>
-<p>
-
-This an endpoint of the api.
-
-**Endpoint**: `GET /api/<string:variable>`
-
-**Return constraints:**
-
-```json
-{
-    "name": String, 
-    "data": {
-        "age": Int,
-        "height": String
-    }
-}
+```bash
+  ./deploy.sh
 ```
 
-**Return example:**
+Le script de déploiement effectuera les étapes suivantes :
 
-```json
-{
-    "name": "jonnylangefeld", 
-    "data": {
-        "age": 27,
-        "height": "6 ft 5.5"
-}
-```
+1. Construira une image Docker pour l'application Flask.
+2. Créera un conteneur Docker à partir de l'image de l'application.
+3. Construira une image Docker pour la base de données MongoDB.
+4. Créera un conteneur Docker pour la base de données MongoDB.
+5. Connectera les conteneurs au même réseau local pour permettre la communication.
 
-</p>
-</details>
+Après avoir exécuté le script, l'application sera accessible depuis un navigateur Web à l'adresse du server (dans le docker nework) au port 8080.
+
+L'image docker est aussi disponible sur dockerHub : [flask-app](https://hub.docker.com/repository/docker/celiobueri/flask-app)
+
+## Configuration
+
+Si vous avez besoin de personnaliser la configuration de l'application ou de la base de données MongoDB pour l'exécution dans les conteneurs Docker, assurez-vous de vérifier les fichiers de configuration dans le répertoire du projet.
+
+## Fonctionnalités
+
+L'application dispose des fonctionnalités suivantes :
+
+- Affichage des données depuis la base de données MongoDB.
+- Ajout de nouvelles données à la base de données. (TODO)
+- Modification des données existantes. (TODO)
+- Suppression des données de la base de données. (TODO)
+
+## Contribution
+
+Si vous souhaitez contribuer à ce projet, n'hésitez pas à créer une pull request sur GitHub. Votre contribution est la bienvenue.
+
+## Auteurs
+
+- Celio Bueri
+- Louis Oger
+- Nolan Clerc
