@@ -39,11 +39,12 @@ class mongoDBConnector:
         return music
 
     def connect(self):
-        username = os.environ.get("MONGO_USERNAME")
-        password = os.environ.get("MONGO_PASSWORD")
-        database = os.environ.get("MONGO_DATABASE")
-        address = os.environ.get("MONGO_ADDRESS")
-        port = os.environ.get("MONGO_PORT")
+        print(os.environ)
+        username = os.environ["MONGO_USERNAME"]
+        password = os.environ["MONGO_PASSWORD"]
+        database = os.environ["MONGO_DATABASE"]
+        address = os.environ["MONGO_ADDRESS"]
+        port = os.environ["MONGO_PORT"]
         # Provide the mongodb atlas url to connect python to mongodb using pymongo
         CONNECTION_STRING = f"mongodb://{username}:{password}@{address}:{port}/"
         print(CONNECTION_STRING)
